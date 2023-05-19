@@ -1,11 +1,17 @@
-const sequelize = require('../config/connection');
-const Post = require('../models/Dish');
-const dishData = require('./dish-seeds.json');
+const sequelize = require("../config/connection");
+const Post = require("../models/Dish");
+const postData = require("./dish-seeds.json");
+const commentData = require("./comment-seeds.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await Dish.bulkCreate(dishData, {
+  await Post.bulkCreate(postData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  await Comment.bulkCreate(commentData, {
     individualHooks: true,
     returning: true,
   });
