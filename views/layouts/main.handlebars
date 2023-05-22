@@ -10,22 +10,23 @@
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
-  </header>
   <nav>
     <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
     <a href="/login">Login</a>
     {{/if}}
   </nav>
+  <header>
+    <h1>Welcome to your Favorite Tech Blog</h1>
+  </header>
   <main>
     <aside>
-      <h2>Enjoy the galleries!</h2>
+      <h2>Let's share the knowledge!</h2>
     </aside>
-    <div class="gallery">
+    <div class="posts">
       {{{body}}}
     </div>
   </main>

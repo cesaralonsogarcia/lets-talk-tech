@@ -1,0 +1,26 @@
+{{#if loggedIn}}
+<section class="container">
+    <section class="justify-left">
+        <h3 class="post-title">{{post.title}}</h3>
+    </section>
+    <section class="justify-right">
+        <h5 class="post-author">Posted by {{post.author}} on {{post.date}}</h5>
+    </section>
+    <section class="flex-row justify-left">
+
+    </section>
+</section>
+<section>
+    <section class="flex-row justify-left">
+        {{#each post.comments as |comment|}}
+        {{> post-details}}
+        {{/each}}
+    </section>
+</section>
+{{else}}
+<section class="container">
+    <section class="justify-center">
+        <h2 class="post-title">Please Log In or Sign Up!</h3>
+    </section>
+</section>
+{{/if}}
