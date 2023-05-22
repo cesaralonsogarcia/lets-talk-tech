@@ -1,10 +1,13 @@
-<section class="post">
-{{#with post}}
-{{> single-post-details}}
-{{/with}}
-<div class="post-details">
-    {{#each post.comments}}
-    {{> comments-details}}
-    {{/each}}
-</div>
+<section class="post text-center">
+    {{#with post}}
+    {{> single-post-details}}
+    {{/with}}
+    <div class="post-details">
+        {{#each post.comments}}
+        {{> comments-details}}
+        {{/each}}
+    </div>
+    <button class="btn comment-btn" onclick="window.location.href='../addComment';">Add Comment</button>
 </section>
+
+<script src="./js/add-comment.js"></script>
