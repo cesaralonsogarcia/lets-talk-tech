@@ -1,0 +1,10 @@
+<section class="post">
+{{#with post}}
+{{> single-post-details}}
+{{/with}}
+<div class="post-details">
+    {{#each post.comments}}
+    {{> comments-details}}
+    {{/each}}
+</div>
+</section>

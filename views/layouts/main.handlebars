@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Museum</title>
+  <title>Let's Talk Tech</title>
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -12,10 +12,13 @@
 <body>
   <nav>
     <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
     {{#if loggedIn}}
+    <a href="/dashboard">Dashboard</a>
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
+    <!-- User will be redirected to login page if they click on the dashboard and they are not logged in -->
+    <!--<a href="/login">Dashboard</a>-->
+    <a href="/login">Dashboard</a>
     <a href="/login">Login</a>
     {{/if}}
   </nav>
@@ -23,9 +26,6 @@
     <h1>Welcome to your Favorite Tech Blog</h1>
   </header>
   <main>
-    <aside>
-      <h2>Let's share the knowledge!</h2>
-    </aside>
     <div class="posts">
       {{{body}}}
     </div>

@@ -1,4 +1,6 @@
-[
+const { Post } = require('../models');
+
+const postdata = [
     {
         "title": "Sequelize",
         "content": "Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.",
@@ -30,3 +32,7 @@
         "date": "10/05/2020"
     }
 ]
+
+const seedPosts = () => Post.bulkCreate(postdata);
+
+module.exports = seedPosts;

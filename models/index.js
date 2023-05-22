@@ -1,4 +1,5 @@
 // Import models
+const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 
@@ -12,4 +13,4 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 });
 
-module.exports = { Post, Comment };
+module.exports = { User, Post, Comment };
