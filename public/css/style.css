@@ -62,10 +62,16 @@
     flex: 4;
     background-color: #fff;
     padding: 50px;
+    width: 80%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+  }
+
+  .btn {
+    background: var(--dark);
+    color: var(--light);
   }
   
   .btn-no-style {
@@ -100,7 +106,7 @@
   /* CARDS */
   .card {
     margin: 20px;
-    flex: 0 1 300px;
+    flex: 0 1 80%;
     border: 7px double var(--dark);
     border-radius: 10px;
     background-color: var(--light);
@@ -109,8 +115,7 @@
   
   .login-card {
     margin: 0 0 20px 0;
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 100%;
     padding: 5px;
     border: 3px solid var(--dark);
     border-radius: var(--border-radius);

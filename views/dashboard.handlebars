@@ -1,22 +1,7 @@
 {{#if loggedIn}}
-<section class="container">
-    <section class="justify-left">
-        <h3 class="post-title">{{post.title}}</h3>
-    </section>
-    <section class="flex-row justify-content-end">
-        <h5 class="post-author">Posted by {{post.author}} on {{post.date}}</h5>
-    </section>
-    <section class="flex-row justify-left">
-
-    </section>
-</section>
-<section>
-    <section class="flex-row justify-left">
-        {{#each post.comments as |comment|}}
-        {{> post-details}}
-        {{/each}}
-    </section>
-</section>
+{{#each posts as |post|}}
+{{> post-details}}
+{{/each}}
 {{else}}
 <section class="container">
     <section class="justify-center">
