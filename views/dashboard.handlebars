@@ -1,7 +1,13 @@
 {{#if loggedIn}}
-{{#each posts as |post|}}
-{{> post-details}}
-{{/each}}
+<div class="btn-container my-5">
+            <a href="/addPost" class="btn">Create Post</a>
+</div>
+<div class="container post-list">
+    {{#each posts as |post|}}
+    {{> dashboard-details}}
+    {{else}}
+    {{/each}}
+</div>
 {{else}}
 <section class="container">
     <section class="justify-center">
@@ -9,3 +15,5 @@
     </section>
 </section>
 {{/if}}
+
+<script src="./js/manage-post.js"></script>

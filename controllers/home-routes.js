@@ -28,11 +28,9 @@ router.get('/', async (req, res) => {
 
 // GET one post
 router.get('/posts/:id', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
-    // If the user is logged in, allow them to view the gallery
     try {
       const dbPostData = await Post.findByPk(req.params.id, {
         include: [
@@ -47,15 +45,23 @@ router.get('/posts/:id', async (req, res) => {
           },
           { 
             model: User,
-            attributes: ['username'],
+            attributes: ['username', 'id'],
           }
         ],
       });
       const post = dbPostData.get({ plain: true });
+
+      console.log(post);
+
       req.session.save(() => {
-        req.session.post_id = post.id ;
+        req.session.post_id = post.id;
       });
-      res.render('posts', { post, loggedIn: req.session.loggedIn });
+
+      console.log(post.id);
+      console.log(typeof post.user_id);
+      console.log(typeof req.session.user_id);
+
+      res.render('posts', { post, loggedIn: req.session.loggedIn, user: req.session.user_id, owner: post.user_id });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -83,7 +89,7 @@ router.get('/dashboard', async (req, res) => {
 
     res.render('dashboard', {
       posts,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     console.log(err);
@@ -91,6 +97,8 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
+
+// Render the login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -100,6 +108,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
+// Render the signup page
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -109,8 +119,49 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+// Render the add comment page
 router.get('/addComment', (req, res) => {
-  res.render('addComment');
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('addComment', {loggedIn: req.session.loggedIn});
+});
+
+// Render the add post page
+router.get('/addPost', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('addPost', {loggedIn: req.session.loggedIn});
+});
+
+// Render the edit post page
+router.get('/editPost/', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  } else {
+    try {
+      const dbPostData = await Post.findByPk(req.session.post_id, {
+        include: [
+          {
+            model: User,
+            attributes: ['username'],
+          },
+        ],
+      });
+      const post = dbPostData.get({ plain: true });
+
+      res.render('editPost', { post, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
 });
 
 module.exports = router;

@@ -14,18 +14,8 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     justify-content: flex-start;
-    background-color: var(--quatrinary);
-  }
-  
-  a {
-    color: var(--dark);
-    text-decoration: none;
-  }
-  
-  a:visited {
-    color: inherit;
+    background-color: white;
   }
   
   header {
@@ -38,7 +28,7 @@
   main {
     display: flex;
     flex-wrap: wrap;
-    flex-grow: 1;
+    justify-content: center;
   }
   
   nav {
@@ -47,7 +37,7 @@
   }
   
   nav a {
-    color: var(--light);
+    color: var(--tertiary);
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
@@ -64,7 +54,7 @@
     padding: 50px;
     width: 80%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
@@ -72,6 +62,17 @@
   .btn {
     background: var(--dark);
     color: var(--light);
+  }
+
+  .btn-large {
+    width: 100%;
+    background: var(--dark);
+    color: var(--light);
+  }
+  .btn-container {
+    width: 100%;
+    background-color: white;
+    text-align: center;
   }
   
   .btn-no-style {
@@ -94,7 +95,6 @@
     width: 100%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
   }
   
   .post-details {
@@ -105,12 +105,13 @@
   
   /* CARDS */
   .card {
-    margin: 20px;
-    flex: 0 1 80%;
+    width: 100%;
     border: 7px double var(--dark);
     border-radius: 10px;
     background-color: var(--light);
     color: var(--dark);
+    align-content: center;
+    justify-content: center;
   }
   
   .login-card {
@@ -156,7 +157,8 @@
   .container {
     display: flex;
     flex-flow: column wrap;
-    align-content: flex-start;
+    justify-content: center;
     align-items: center;
+    width: 100%;
   }
   

@@ -7,11 +7,11 @@ router.post('/', async (req, res) => {
     console.log(req.body);
     const commentData = await Comment.create({
       ...req.body,
-      date: new Date(),
+      date: Date.now(),
       user_id: req.session.user_id,
       post_id: req.session.post_id,
   });
-  console.log(commentData);
+
   // If the post is successfully created, the new response will be returned as json
   res.status(200).json(commentData)
 } catch (err) {
