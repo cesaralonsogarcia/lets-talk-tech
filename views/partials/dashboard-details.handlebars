@@ -1,13 +1,15 @@
 <section class="posts">
-    <section class="card">
-        <a href="/posts/{{id}}">
-            <header>{{title}}</header>
-            <p>{{content}}</p>
-            <p>Posted by {{user.username}} on {{format_date date}}</p>
-        </a>
-        <div class="text-center">
-        <button class="btn btn-primary" id="edit-post-btn" onclick="window.location.href='../editPost';">Edit</button>
-        <button class="btn btn-danger delete-post-btn" data-id="{{id}}">Delete</button>
-        </div>
-    </section>
+  <section class="card">
+    <a href="/posts/{{id}}">
+      <header>{{title}}</header>
+      <p>{{content}}</p>
+      <p>Posted by {{user.username}} on {{format_date date}}</p>
+    </a>
+    <div class="text-center">
+      <button
+        class="btn btn-danger delete-post-btn"
+        data-id="{{id}}"
+      >Delete</button>
+    </div>
+  </section>
 </section>
