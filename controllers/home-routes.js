@@ -113,8 +113,24 @@ router.get("/signup", (req, res) => {
 });
 
 // Render the add comment page
-router.get("/addComment", withAuth, (req, res) => {
-  res.render("addComment", { loggedIn: req.session.loggedIn });
+router.get("/addComment", withAuth, async (req, res) => {
+  try {
+    const dbPostData = await Post.findByPk(req.session.post_id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username", "id"],
+        },
+      ],
+    });
+
+    const post = dbPostData.get({ plain: true });
+
+    res.render("addComment", { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // Render the add post page
