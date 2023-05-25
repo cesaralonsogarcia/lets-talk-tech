@@ -51,17 +51,15 @@ router.get('/posts/:id', async (req, res) => {
       });
       const post = dbPostData.get({ plain: true });
 
-      console.log(post);
-
       req.session.save(() => {
         req.session.post_id = post.id;
       });
 
-      console.log(post.id);
-      console.log(typeof post.user_id);
-      console.log(typeof req.session.user_id);
-
-      res.render('posts', { post, loggedIn: req.session.loggedIn, user: req.session.user_id, owner: post.user_id });
+      res.render('posts', { 
+        post, 
+        user_id: post.user_id,
+        owner: req.session.user_id, 
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

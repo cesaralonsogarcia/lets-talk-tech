@@ -6,5 +6,8 @@ module.exports = {
       const year = dateFormat.getFullYear();
       return `${day}/${month}/${year}`;
     },
+    is_owner: (postUser, loggedInUser) => {
+      return postUser === loggedInUser;
+    }
   };
   
