@@ -48,7 +48,11 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Application Screenshot
 
-![Tech Blog](address)
+![Tech Blog](https://github.com/cesaralonsogarcia/lets-talk-tech/blob/main/public/images/lets-talk-tech-screenshot.png)
+
+## Link to Deployed Application
+
+
 
 ## GitHub Repository
 
