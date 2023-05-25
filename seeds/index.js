@@ -7,7 +7,7 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
   await seedUsers();
-  
+
   await seedPosts();
 
   await seedComments();

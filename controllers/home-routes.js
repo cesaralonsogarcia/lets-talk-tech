@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// GET all posts for homepage
+// Route to get all posts
 router.get("/", async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET one post
+// Route to get a single post
 router.get("/posts/:id", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id, {
@@ -65,7 +65,7 @@ router.get("/posts/:id", withAuth, async (req, res) => {
   }
 });
 
-// GET all posts for user
+// Route to get all posts by a single user
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -92,7 +92,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-// Render the login page
+// Route to render the login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -102,7 +102,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Render the signup page
+// Route to render the signup page
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -112,7 +112,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-// Render the add comment page
+// Route to render the add comment page
 router.get("/addComment", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.session.post_id, {
@@ -133,12 +133,12 @@ router.get("/addComment", withAuth, async (req, res) => {
   }
 });
 
-// Render the add post page
+// Route to render the add post page
 router.get("/addPost", withAuth, (req, res) => {
   res.render("addPost", { loggedIn: req.session.loggedIn });
 });
 
-// Render the edit post page
+// Route to render the edit post page
 router.get("/editPost/", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.session.post_id, {
