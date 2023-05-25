@@ -49,9 +49,11 @@ router.get("/posts/:id", async (req, res) => {
       });
       const post = dbPostData.get({ plain: true });
 
-      // req.session.save(() => {
-      //   req.session.post_id = post.id;
-      // });
+      req.session.save(() => {
+        req.session.post_id = post.id;
+        req.session.post_title = post.title;
+        req.session.post_content = post.content;
+      });
 
       res.render("posts", {
         post,
@@ -149,12 +151,13 @@ router.get("/editPost/", async (req, res) => {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: ["username", "id"],
           },
         ],
       });
-      const post = dbPostData.get({ plain: true });
 
+      const post = dbPostData.get({ plain: true });
+      
       res.render("editPost", { post, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
