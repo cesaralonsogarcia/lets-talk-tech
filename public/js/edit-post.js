@@ -1,6 +1,8 @@
 const editButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
-    const id = event.target.getAttribute("data-id");
+    //const id = event.target.getAttribute("data-id");
+
+    const id = document.querySelector("#post-content").getAttribute("data-id");
 
     const title = document.querySelector("#post-title").value.trim();
     const content = document.querySelector("#post-content").value.trim();

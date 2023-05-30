@@ -10,7 +10,6 @@ router.post("/", async (req, res) => {
       ...req.body,
       date: Date.now(),
       user_id: req.session.user_id,
-      //post_id: req.session.post_id,
     });
 
     res.status(200).json(commentData);
