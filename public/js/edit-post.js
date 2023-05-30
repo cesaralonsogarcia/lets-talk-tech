@@ -1,6 +1,5 @@
 const editButtonHandler = async (event) => {
-  if (event.target.hasAttribute("data-id")) {
-    //const id = event.target.getAttribute("data-id");
+  event.preventDefault();
 
     const id = document.querySelector("#post-content").getAttribute("data-id");
 
@@ -8,20 +7,23 @@ const editButtonHandler = async (event) => {
     const content = document.querySelector("#post-content").value.trim();
     const date = Date.now();
 
+    if (content) {
     const response = await fetch(`/api/posts/${id}`, {
       method: "PUT",
       body: JSON.stringify({ title, content, date, id }),
       headers: { "Content-Type": "application/json" },
     });
 
+    const responseData = await response.json();
+
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert("Failed to delete project");
+      alert("Failed to edit post");
     }
   }
 };
 
 document
-  .querySelector(".edit-post-btn")
-  .addEventListener("click", editButtonHandler);
+  .querySelector(".edit-form")
+  .addEventListener("submit", editButtonHandler);
