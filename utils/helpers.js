@@ -1,7 +1,7 @@
 module.exports = {
   format_date: (date) => {
     const dateFormat = new Date(date);
-    const day = dateFormat.getDate() + 1;
+    const day = dateFormat.getDate();
     const month = dateFormat.getMonth() + 1;
     const year = dateFormat.getFullYear();
     return `${month}/${day}/${year}`;
