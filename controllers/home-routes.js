@@ -139,7 +139,7 @@ router.get("/addPost", withAuth, (req, res) => {
 });
 
 // Route to render the edit post page
-router.get("/editPost/", withAuth, async (req, res) => {
+router.get("/editPost", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.session.post_id, {
       include: [
