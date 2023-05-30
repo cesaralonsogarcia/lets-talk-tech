@@ -52,7 +52,7 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Link to Deployed Application
 
-
+https://lets-talk-tech-app.herokuapp.com/
 
 ## GitHub Repository
 
