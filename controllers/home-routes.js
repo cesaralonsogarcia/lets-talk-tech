@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 const withAuth = require("../utils/auth");
 
+let post_id;
+
 // Route to get all posts
 router.get("/", async (req, res) => {
   try {
@@ -47,11 +49,7 @@ router.get("/posts/:id", withAuth, async (req, res) => {
     });
     const post = dbPostData.get({ plain: true });
 
-    req.session.save(() => {
-      req.session.post_id = post.id;
-      req.session.post_title = post.title;
-      req.session.post_content = post.content;
-    });
+    post_id = post.id;
 
     res.render("posts", {
       post,
@@ -115,7 +113,7 @@ router.get("/signup", (req, res) => {
 // Route to render the add comment page
 router.get("/addComment", withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.findByPk(req.session.post_id, {
+    const dbPostData = await Post.findByPk(post_id, {
       include: [
         {
           model: User,
@@ -141,7 +139,7 @@ router.get("/addPost", withAuth, (req, res) => {
 // Route to render the edit post page
 router.get("/editPost", withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.findByPk(req.session.post_id, {
+    const dbPostData = await Post.findByPk(post_id, {
       include: [
         {
           model: User,
