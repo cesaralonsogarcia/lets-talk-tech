@@ -10,7 +10,7 @@ const editButtonHandler = async (event) => {
 
     const response = await fetch(`/api/posts/${id}`, {
       method: "PUT",
-      body: JSON.stringify({ title, content, date }),
+      body: JSON.stringify({ title, content, date, id }),
       headers: { "Content-Type": "application/json" },
     });
 
