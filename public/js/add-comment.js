@@ -2,11 +2,12 @@ const addCommentFormHandler = async (event) => {
   event.preventDefault();
 
   const content = document.querySelector("#comment-content").value.trim();
+  const post_id = document.querySelector("#comment-content").getAttribute("data-id");
 
   if (content) {
     const response = await fetch("/api/comment/", {
       method: "POST",
-      body: JSON.stringify({ content }),
+      body: JSON.stringify({ content, post_id }),
       headers: { "Content-Type": "application/json" },
     });
 

@@ -6,12 +6,11 @@ const Comment = require("../../models/Comment");
 // Route to add a new comment
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
     const commentData = await Comment.create({
       ...req.body,
       date: Date.now(),
       user_id: req.session.user_id,
-      post_id: req.session.post_id,
+      //post_id: req.session.post_id,
     });
 
     res.status(200).json(commentData);
