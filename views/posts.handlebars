@@ -4,7 +4,7 @@
     {{/with}}
     {{#if (is_owner user_id owner)}}
     <div class="text-center mb-5">
-        <button class="btn edit-post-btn" onclick="window.location.href='../editPost/';" data-id="{{post.id}}">Edit
+        <button class="btn edit-post-btn" onclick="window.location.href='/editPost/';" data-id="{{post.id}}">Edit
             Post</button>
         <button class="btn btn-danger delete-post-btn" data-id="{{post.id}}">Delete</button>
     </div>
@@ -16,6 +16,6 @@
         {{/each}}
     </div>
     <div class="text-center mb-5">
-        <button class="btn comment-btn" onclick="window.location.href='./addComment';">Add Comment</button>
+        <button class="btn comment-btn" onclick="window.location.href='/addComment';">Add Comment</button>
     </div>
 </div>
