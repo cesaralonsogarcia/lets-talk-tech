@@ -15,6 +15,7 @@ const sess = {
   secret: "Super secret secret",
   cookie: {
     maxAge: 15 * 60 * 1000, // 15 minutes
+    secure: false,
   },
   proxy: true,
   resave: false,
@@ -24,7 +25,8 @@ const sess = {
   }),
 };
 
-app.set("trust proxy", 1);
+app.enable("trust proxy", true);
+
 app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
